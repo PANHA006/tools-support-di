@@ -1865,6 +1865,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- PWA Installation Logic ---
     let deferredPrompt = null;
     const btnInstallApp = document.getElementById('btn-install-app');
+    const iosInstallInstruction = document.getElementById('ios-install-instruction');
+
+    // Check if the device is iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    if (isIOS && iosInstallInstruction) {
+        const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+        if (!isStandalone) {
+            iosInstallInstruction.style.display = 'block';
+        }
+    }
 
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
