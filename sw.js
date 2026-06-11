@@ -1,5 +1,6 @@
 const CACHE_NAME = 'di-tools-cache-v1';
 const ASSETS_TO_CACHE = [
+  './',
   './index.html',
   './css/style.css',
   './js/script.js',
