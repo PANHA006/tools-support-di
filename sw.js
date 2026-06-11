@@ -5,6 +5,8 @@ const ASSETS_TO_CACHE = [
   './js/script.js',
   './manifest.json',
   './images/logo.png',
+  './images/icon-192.png',
+  './images/icon-512.png',
   './images/profile.jpg',
   './images/QR.png'
 ];
