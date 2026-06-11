@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             report += `- មិនបានធ្វើរីអេកសិន ${notDoneMembers.length} នាក់\n`;
             notDoneMembers.forEach((item, index) => {
-                report += `${index + 1}. ${item.fullName}         (${item.reason})\n`;
+                report += `${index + 1}. ${item.fullName} (${item.reason})\n`;
             });
 
             report += `\nសូមគោរពអរគុណមេ🙏`;
@@ -519,11 +519,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(reactionReportText.value)
                 .then(() => {
                     btnCopyReactionReport.classList.add('success');
-                    if (copyReactionBtnText) copyReactionBtnText.textContent = 'ចម្លងជោគជ័យ (Copied!)';
+                    const originalSvg = btnCopyReactionReport.innerHTML;
+                    btnCopyReactionReport.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    `;
 
                     setTimeout(() => {
                         btnCopyReactionReport.classList.remove('success');
-                        if (copyReactionBtnText) copyReactionBtnText.textContent = 'ចម្លងរបាយការណ៍ (Copy)';
+                        btnCopyReactionReport.innerHTML = originalSvg;
                     }, 2000);
                 })
                 .catch(err => {
@@ -892,11 +897,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(attendanceReportText.value)
                 .then(() => {
                     btnCopyReport.classList.add('success');
-                    if (copyBtnText) copyBtnText.textContent = 'ចម្លងជោគជ័យ (Copied!)';
+                    const originalSvg = btnCopyReport.innerHTML;
+                    btnCopyReport.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    `;
 
                     setTimeout(() => {
                         btnCopyReport.classList.remove('success');
-                        if (copyBtnText) copyBtnText.textContent = 'ចម្លងរបាយការណ៍ (Copy)';
+                        btnCopyReport.innerHTML = originalSvg;
                     }, 2000);
                 })
                 .catch(err => {
@@ -1111,7 +1121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             report += `+ មិនបានផុស ${notDoneMembers.length} នាក់\n`;
             notDoneMembers.forEach((item, index) => {
-                report += `${index + 1}. ${item.fullName}                 (${item.reason})\n`;
+                report += `${index + 1}. ${item.fullName} (${item.reason})\n`;
             });
 
             // Set report output
@@ -1163,11 +1173,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(tourismReportText.value)
                 .then(() => {
                     btnCopyTourismReport.classList.add('success');
-                    if (copyTourismBtnText) copyTourismBtnText.textContent = 'ចម្លងជោគជ័យ (Copied!)';
+                    const originalSvg = btnCopyTourismReport.innerHTML;
+                    btnCopyTourismReport.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    `;
 
                     setTimeout(() => {
                         btnCopyTourismReport.classList.remove('success');
-                        if (copyTourismBtnText) copyTourismBtnText.textContent = 'ចម្លងរបាយការណ៍ (Copy)';
+                        btnCopyTourismReport.innerHTML = originalSvg;
                     }, 2000);
                 })
                 .catch(err => {
@@ -1468,10 +1483,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ${initial}
                                 </div>
                                 <div class="member-item-info" style="display: flex; flex-direction: column;">
-                                    <span class="member-item-name" style="font-family: var(--font-khmer); font-size: 0.92rem; font-weight: 600; color: var(--gray-800);">
-                                        ${escapeHtml(member.name)} 
-                                        ${member.username ? `<span style="color: var(--primary-500); font-weight: 500; font-size: 0.85rem; margin-left: 4px;">@${escapeHtml(member.username.replace('@', '').trim())}</span>` : ''}
-                                    </span>
+                                    <span class="member-item-name" style="font-family: var(--font-khmer); font-size: 0.92rem; font-weight: 600; color: var(--gray-800);">${escapeHtml(member.name)}</span>
+                                    ${member.username ? `<span class="member-item-username" style="color: var(--primary-500); font-weight: 500; font-size: 0.85rem; margin-top: 2px;">@${escapeHtml(member.username.replace('@', '').trim())}</span>` : ''}
                                 </div>
                             </div>
 
@@ -1783,6 +1796,33 @@ document.addEventListener('DOMContentLoaded', () => {
         profileModal.addEventListener('click', (e) => {
             if (e.target === profileModal) {
                 profileModal.style.display = 'none';
+            }
+        });
+    }
+
+    // --- Donate Modal Logic ---
+    const btnOpenDonateModal = document.getElementById('btn-open-donate-modal');
+    const donateModal = document.getElementById('donate-modal');
+    const btnCloseDonateModal = document.getElementById('btn-close-donate-modal');
+
+    if (btnOpenDonateModal && donateModal) {
+        btnOpenDonateModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (profileModal) profileModal.style.display = 'none';
+            donateModal.style.display = 'flex';
+        });
+    }
+
+    if (btnCloseDonateModal && donateModal) {
+        btnCloseDonateModal.addEventListener('click', () => {
+            donateModal.style.display = 'none';
+        });
+    }
+
+    if (donateModal) {
+        donateModal.addEventListener('click', (e) => {
+            if (e.target === donateModal) {
+                donateModal.style.display = 'none';
             }
         });
     }

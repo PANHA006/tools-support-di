@@ -1768,9 +1768,9 @@ body {
 
 /* Copy button adjustments */
 .btn-copy {
-    border: 1px solid var(--border-color);
+    border: 1px solid rgb(0, 38, 255);
     background: transparent;
-    color: var(--gray-600);
+    color: rgb(0, 38, 255);
     font-family: var(--font-khmer);
     font-size: 0.85rem;
     font-weight: 600;
@@ -1885,8 +1885,8 @@ body {
 }
 
 .profile-avatar-large {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid transparent;
@@ -1909,16 +1909,12 @@ body {
     margin: 0;
 }
 
-/* 5 buttons grid: 2 columns, 5th spans both */
+/* 6 buttons grid: 2 columns */
 .profile-links-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 24px;
-}
-
-.profile-link-btn.bot {
-    grid-column: span 2;
 }
 
 .profile-link-btn {
@@ -1970,6 +1966,10 @@ body {
 
 .profile-link-btn.bot {
     background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.profile-link-btn.donate {
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
 }
 
 /* QR code section */
