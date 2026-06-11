@@ -1853,6 +1853,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Service Worker Registration for PWA ---
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then((reg) => console.log('Service Worker registered successfully!', reg.scope))
+                .catch((err) => console.error('Service Worker registration failed:', err));
+        });
+    }
+
+    // --- PWA Installation Logic ---
+    let deferredPrompt = null;
+    const btnInstallApp = document.getElementById('btn-install-app');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (btnInstallApp) {
+            btnInstallApp.style.display = 'flex';
+        }
+    });
+
+    if (btnInstallApp) {
+        btnInstallApp.addEventListener('click', (e) => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the PWA install prompt');
+                } else {
+                    console.log('User dismissed the PWA install prompt');
+                }
+                deferredPrompt = null;
+                btnInstallApp.style.display = 'none';
+            });
+        });
+    }
+
+    window.addEventListener('appinstalled', (evt) => {
+        console.log('DI Tools was installed successfully!');
+        if (btnInstallApp) {
+            btnInstallApp.style.display = 'none';
+        }
+    });
+
     // --- Initialize ---
     updateDate();
     handleInitialRoute();

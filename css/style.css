@@ -1972,6 +1972,10 @@ body {
     background: linear-gradient(135deg, #ec4899, #f43f5e);
 }
 
+.profile-link-btn.install-app {
+    background: linear-gradient(135deg, var(--primary-600), var(--pink-500));
+}
+
 /* QR code section */
 .profile-divider {
     border: none;
