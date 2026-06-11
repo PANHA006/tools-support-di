@@ -12,6 +12,11 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="DI Tools">
+    <link rel="apple-touch-icon" href="images/logo.png">
 </head>
 
 <body>
@@ -152,13 +157,12 @@
                                 style="margin: 0; font-family: var(--font-khmer); font-size: 1.1rem; font-weight: 600; color: var(--gray-800); white-space: nowrap;">
                                 របាយការណ៍វត្តមាន</h2>
                             <button class="btn-copy" id="btn-copy-report"
-                                style="padding: 8px 16px; font-size: 0.85rem; font-family: var(--font-khmer); font-weight: 600; border: 1px solid var(--border-color); border-radius: var(--radius-full); background: transparent; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; flex-shrink: 0;">
+                                style="width: 36px; height: 36px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; cursor: pointer; border: 1px solid var(--border-color); transition: 0.2s; flex-shrink: 0;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
                                     height="16" id="copy-icon">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                                 </svg>
-                                <span id="copy-btn-text">ចម្លងរបាយការណ៍ (Copy)</span>
                             </button>
                         </div>
 
@@ -222,13 +226,12 @@
                                 style="margin: 0; font-family: var(--font-khmer); font-size: 1.1rem; font-weight: 600; color: var(--gray-800); white-space: nowrap;">
                                 របាយការណ៍វីដេអូទេសចរណ៍</h2>
                             <button class="btn-copy" id="btn-copy-tourism-report"
-                                style="padding: 8px 16px; font-size: 0.85rem; font-family: var(--font-khmer); font-weight: 600; border: 1px solid var(--border-color); border-radius: var(--radius-full); background: transparent; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; flex-shrink: 0;">
+                                style="width: 36px; height: 36px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; cursor: pointer; border: 1px solid var(--border-color); transition: 0.2s; flex-shrink: 0;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
                                     height="16" id="copy-tourism-icon">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                                 </svg>
-                                <span id="copy-tourism-btn-text">ចម្លងរបាយការណ៍ (Copy)</span>
                             </button>
                         </div>
 
@@ -316,13 +319,12 @@
                                 style="margin: 0; font-family: var(--font-khmer); font-size: 1.1rem; font-weight: 600; color: var(--gray-800); white-space: nowrap;">
                                 របាយការណ៍រីអេកសិន</h2>
                             <button class="btn-copy" id="btn-copy-reaction-report"
-                                style="padding: 8px 16px; font-size: 0.85rem; font-family: var(--font-khmer); font-weight: 600; border: 1px solid var(--border-color); border-radius: var(--radius-full); background: transparent; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; flex-shrink: 0;">
+                                style="width: 36px; height: 36px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; cursor: pointer; border: 1px solid var(--border-color); transition: 0.2s; flex-shrink: 0;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"
                                     height="16" id="copy-reaction-icon">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                                 </svg>
-                                <span id="copy-reaction-btn-text">ចម្លងរបាយការណ៍ (Copy)</span>
                             </button>
                         </div>
 
@@ -517,19 +519,45 @@
                     </svg>
                     <span>Bot</span>
                 </a>
+                <button class="profile-link-btn donate" id="btn-open-donate-modal" style="border: none; cursor: pointer;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="btn-icon">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <line x1="12" y1="18" x2="12" y2="18" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                    </svg>
+                    <span>Donate</span>
+                </button>
+                <button class="profile-link-btn install-app" id="btn-install-app" style="display: none; grid-column: span 2; border: none; cursor: pointer;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>ដំឡើងកម្មវិធី (Install App)</span>
+                </button>
             </div>
 
-            <p class="profile-thank-you">អរគុណចំពោះការប្រើប្រាស់ឧបករណ៍របស់ខ្ញុំ! 🙏<br><span
+            <p class="profile-thank-you" style="margin-bottom: 0;">អរគុណចំពោះការប្រើប្រាស់ឧបករណ៍របស់ខ្ញុំ! 🙏<br><span
                     style="font-size: 0.82rem; opacity: 0.8;">Thank you for using my tools!</span></p>
+        </div>
+    </div>
 
-            <hr class="profile-divider">
+    <!-- Donate Modal -->
+    <div class="modal-overlay" id="donate-modal" style="display: none;">
+        <div class="modal-card profile-modal-card">
+            <button class="modal-close-btn" id="btn-close-donate-modal"
+                aria-label="Close Donate Modal">&times;</button>
+            <div class="profile-header-info" style="margin-bottom: 16px;">
+                <h3 class="profile-creator-name">ស្កេនដើម្បីឧបត្ថម្ភ (Donate)</h3>
+            </div>
 
-            <div class="profile-qr-grid">
+            <div class="profile-qr-grid" style="display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 16px; padding: 20px;">
                 <div class="profile-qr-left">
-                    <img src="images/QR.png" alt="QR Code" class="profile-qr-code">
+                    <img src="images/QR.png" alt="QR Code" class="profile-qr-code" style="width: 180px; height: 180px;">
                 </div>
-                <div class="profile-qr-right">
-                    <div class="payment-name-label"><span class="highlight-name">LAO panha</span></div>
+                <div class="profile-qr-right" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div class="payment-name-label" style="text-align: center;"><span class="highlight-name" style="margin-left: 0;">LAO panha</span></div>
                     <div class="payment-number-container">
                         <span id="payment-number-text" class="payment-number">048 000 045 3503</span>
                         <button class="btn-copy-payment" id="btn-copy-payment" title="Copy Number">
